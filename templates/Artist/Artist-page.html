@@ -1,0 +1,121 @@
+{% extends 'BASE.html' %}
+{% load static %}
+
+<!--  اتصال به صفهه پایه با بلوک بادی و اند بلوک -->
+{% block body %}
+<!-- "ALL POST " -->
+<div class="container">
+    <div class="row">
+        <!-- Main content -->
+        <section class="col-lg-8 col-md-8">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="text-uppercase"> About the elders </h2>
+                    <hr class="templatemo-section-header-hr">
+                    <p class="text-uppercase templatemo-section-subheader margin-bottom-0">View All Artist </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- حلقه زدن برای پست ها -->
+                    {% for post in posts %}
+
+                    <article class="templatemo-blog-post">
+                        <div class="post-img-container">
+                            <img src="{{post.image.url}}" alt="Post 1" class="post-img img-responsive">
+                            <div class="templatemo-post-social">
+                            </div>
+                            <div class="templatemo-post-date gold-text">
+                                <div>
+                                    <div class="text-center date">20</div>
+                                    <div class="text-center">January</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-title">
+                            <a class="posts-title" href="{% url 'Artist:single' pid=post.id %}">
+                                <h3 class="text-uppercase">{{post.title}}</h3>
+                            </a>
+                        </div>
+                        <div class="post-meta-data">
+                            <p class="gold-text"><i>Posted by <strong>{{post.author}}</strong> --- <strong>Views:
+                                        {{post.content_view}} </strong> --- <strong>
+                                        {{post.poblished_date|date:"SHORT_DATE_FORMAT"}}</strong></i></p>
+                        </div>
+                        <div class="post-excerpt gray-text">
+                            <p>{{post.content|truncatewords:4|safe}}.</p>
+                        </div>
+                        <a href="{% url 'Artist:single' pid=post.id %}" class="gray-text margin-top-10 post-read-more">
+                            <i class="fa fa-arrow-circle-o-right fa-2x v-align-middle"></i> Read More
+                        </a>
+                        <hr>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-right">
+                    <!-- بخش مربوط به تغییر صفهه در نوار انتخابی -->
+                    <div class="pagination-wrap blog-post-pagination">
+                        <ul class="pagination">
+                            {% if posts.has_previous %}
+                            <li>
+                                <a href="?page={{ posts.prev_page_number }}" aria-label="prev">
+                                    <span aria-hidden="true"><i> Back </i></span>
+                                </a>
+                            </li>
+                            {% endif %}
+
+                            {% for i in posts.paginator.page_range %}
+                            {% if posts.number == i %}
+                            <li class="page-item active"><a href="?page={{i}}" class="page-link">{{i}}</a></li>
+                            {% else %}
+                            <li class="page-item"><a href="?page={{i}}" class="page-link">{{i}}</a></li>
+                            {% endif %}
+                            {% endfor %}
+
+                            {% if posts.has_next %}
+                            <li>
+                                <a href="?page={{ posts.next_page_number }}" aria-label="Next">
+                                    <span aria-hidden="true"><i> Next </i></span>
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section> <!-- end "ALL POST " -->
+        <!-- نوار کناری -->
+            <!-- پست های اخیر -->
+        <br><br><br><br><br><br>
+        <aside class="col-lg-4 col-md-4 templatemo-blog-post-aside">
+            <div class="aside-block">
+                <h4 class="text-uppercase"><i> Recent Posts </i></h4>
+                <hr class="gold-hr">
+                {% for post in posts %}
+                <article class="aside-post-excerpt">
+                    <a href="{% url 'Artist:single' pid=post.id %}">
+                        <h4 class="text-uppercase">{{ post.title }}</h4>
+                    </a>
+                    <p class="gold-text"><i>{{ post.poblished_date|date:"d M Y"}}</i></p>
+                    <p>{{ post.content|truncatewords:10|safe }}</p>
+
+                    <p><b><i>Author: <strong>{{post.author}}</strong></i></b></p>
+                </article>
+                <br><br>
+                {% endfor %}
+
+            </div> 
+            <!-- تگ های مربوط به پست ها-->
+            <div class="aside-block">
+                <h4 class="text-uppercase"><i>Tags</i></h4>
+                <hr class="gold-hr">
+                <ul class="tag-list">
+                    <li><a href="#">Ad tibique</a></li>
+                </ul>
+            </div> <!-- /.aside-block -->
+        </aside>
+    </div>
+</div>
+{% endblock %}

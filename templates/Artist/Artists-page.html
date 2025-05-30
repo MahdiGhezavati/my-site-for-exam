@@ -1,0 +1,103 @@
+{% extends 'BASE.html' %}
+{% load static %}
+{% block body %}
+<!-- start banner Area -->
+<!-- "Latest News" -->
+
+<style>
+	ul {
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.fonnet {
+		font-size: medium;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		font-weight: bold;
+		display: inline-block;
+		margin-left: 80px;
+	}
+</style>
+<div class="container">
+	<div class="row">
+		<!-- Main content -->
+		<section class="col-lg-8 col-md-8">
+			<div class="row">
+				<div class="col-lg-12">
+					<h2 class="text-uppercase">{{ post.title}}</h2>
+					<hr class="templatemo-section-header-hr">
+					<a href="{% url 'Artist:blog-Artist'%}">
+						<p class="text-uppercase templatemo-section-subheader margin-bottom-0">View All Artists</p>
+					</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="row">
+						<div class="col-lg-12">
+							<article class="templatemo-blog-post">
+								<div class="post-img-container">
+									<img src="{{post.image.url}}" alt="image for this post"
+										class="post-img img-responsive">
+								</div>
+								<br>
+								<div class="single-post row">
+									<div class="text-uppercase">
+									<ul>
+										<li class="fonnet">Posted by {{post.author}}</li>
+										<li class="fonnet">Comments for this : {{comments|length}}</li>
+										<li class="fonnet">View : {{post.content_view}}</li>
+									</ul>
+									</div>
+									<br>
+									<div class="col-lg-3  col-md-3 meta-details">
+									</div>
+									<div class="col-lg-90 col-md-6 col-sm-12 col-xs-12">
+										<div class="gold-border">
+											<div class="product-type-message">
+												<h3><strong>{{ post.title}}</strong></h3>
+												{{post.content|safe}}
+											</div>
+										</div>
+									</div>
+								</div>
+							</article>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section> <!-- end "Latest News" -->
+		<br><br><br><br><br><br>
+        <aside class="col-lg-4 col-md-4 templatemo-blog-post-aside">
+            <div class="aside-block">
+                <h4 class="text-uppercase"><i> Recent Posts </i></h4>
+                <hr class="gold-hr">
+                {% for post in posts %}
+                <article class="aside-post-excerpt">
+                    <a href="{% url 'Artist:single' pid=post.id %}">
+                        <h4 class="text-uppercase">{{ post.title }}</h4>
+                    </a>
+                    <p class="gold-text"><i>{{ post.poblished_date|date:"d M Y"}}</i></p>
+                    <p>{{ post.content|truncatewords:10|safe }}</p>
+
+                    <p><b><i>Author: <strong>{{post.author}}</strong></i></b></p>
+                </article>
+                <br><br>
+                {% endfor %}
+
+            </div> 
+            <!-- تگ های مربوط به پست ها-->
+            <div class="aside-block">
+                <h4 class="text-uppercase"><i>Tags</i></h4>
+                <hr class="gold-hr">
+                <ul class="tag-list">
+                    <li><a href="#">Ad tibique</a></li>
+                </ul>
+            </div> <!-- /.aside-block -->
+        </aside>
+	</div>
+</div>
+
+<!-- End post-content Area -->
+{% endblock %}
