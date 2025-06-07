@@ -3,6 +3,15 @@
 
 <!--  اتصال به صفهه پایه با بلوک بادی و اند بلوک -->
 {% block body %}
+<style>
+    .fonet{
+        font-family:fantasy;
+        font-size: x-large;
+    }
+    .fonet-title{
+        font-size: xx-large;
+    }
+</style>
 <!-- "ALL POST " -->
 <div class="container">
     <div class="row">
@@ -22,25 +31,20 @@
 
                     <article class="templatemo-blog-post">
                         <div class="post-img-container">
-                            <img src="{{post.image.url}}" alt="Post 1" class="post-img img-responsive">
+                            <img src="{{post.image.url}}" alt="Post 1" class="post-img img-responsive" height="600px"
+                                width="650px">
                             <div class="templatemo-post-social">
                             </div>
                             <div class="templatemo-post-date gold-text">
                                 <div>
-                                    <div class="text-center date">20</div>
-                                    <div class="text-center">January</div>
+                                    <div class="text-uppercase fonet">{{post.title}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="post-title">
                             <a class="posts-title" href="{% url 'Artist:single' pid=post.id %}">
-                                <h3 class="text-uppercase">{{post.title}}</h3>
+                                <h3 class="text-uppercase black-text fonet fonet-title">{{post.title}}</h3><hr class="gold-hr">
                             </a>
-                        </div>
-                        <div class="post-meta-data">
-                            <p class="gold-text"><i>Posted by <strong>{{post.author}}</strong> --- <strong>Views:
-                                        {{post.content_view}} </strong> --- <strong>
-                                        {{post.poblished_date|date:"SHORT_DATE_FORMAT"}}</strong></i></p>
                         </div>
                         <div class="post-excerpt gray-text">
                             <p>{{post.content|truncatewords:4|safe}}.</p>
@@ -48,7 +52,6 @@
                         <a href="{% url 'Artist:single' pid=post.id %}" class="gray-text margin-top-10 post-read-more">
                             <i class="fa fa-arrow-circle-o-right fa-2x v-align-middle"></i> Read More
                         </a>
-                        <hr>
                     </article>
                     {% endfor %}
                 </div>
@@ -87,33 +90,24 @@
             </div>
         </section> <!-- end "ALL POST " -->
         <!-- نوار کناری -->
-            <!-- پست های اخیر -->
+        <!-- پست های اخیر -->
         <br><br><br><br><br><br>
         <aside class="col-lg-4 col-md-4 templatemo-blog-post-aside">
+            <br><br>
             <div class="aside-block">
-                <h4 class="text-uppercase"><i> Recent Posts </i></h4>
+                <h4 class="text-uppercase"><i>Maybe want too see</i></h4>
+                {% for Artwork in Artworks|slice:":5" %}
                 <hr class="gold-hr">
-                {% for post in posts %}
-                <article class="aside-post-excerpt">
-                    <a href="{% url 'Artist:single' pid=post.id %}">
-                        <h4 class="text-uppercase">{{ post.title }}</h4>
-                    </a>
-                    <p class="gold-text"><i>{{ post.poblished_date|date:"d M Y"}}</i></p>
-                    <p>{{ post.content|truncatewords:10|safe }}</p>
-
-                    <p><b><i>Author: <strong>{{post.author}}</strong></i></b></p>
-                </article>
-                <br><br>
+                <p class="text-uppercase product-type-container ">
+                    <a href="{% url 'Artwork:single-Artwork' pid=Artwork.id %}" class="black-text">
+                        <img src="{{Artwork.image.url}}" alt="image for this post"
+                            class="post-img img-responsive product-type-img product-type-info fa.white-border img-collection gold-border"
+                            height="50px" width="80px">
+                        <br>
+                        <strong> &blacktriangleright; {{ Artwork.title}}</strong></a>
+                </p>
+                <p> {{Artwork.content|truncatewords:10|safe}}</p>
                 {% endfor %}
-
-            </div> 
-            <!-- تگ های مربوط به پست ها-->
-            <div class="aside-block">
-                <h4 class="text-uppercase"><i>Tags</i></h4>
-                <hr class="gold-hr">
-                <ul class="tag-list">
-                    <li><a href="#">Ad tibique</a></li>
-                </ul>
             </div> <!-- /.aside-block -->
         </aside>
     </div>

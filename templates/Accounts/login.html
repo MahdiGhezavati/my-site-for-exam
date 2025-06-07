@@ -4,13 +4,18 @@
 <html lang="en">
 
 <head>
+    <title>login</title>
     <style>
-
         html {
-            background-color: #fdff79;  
+            background-image: url(/static/img/dash-bg-03.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 120%;
+            width: 100%;
         }
 
         body {
+
             font-family: "Poppins", sans-serif;
             height: 100vh;
         }
@@ -312,24 +317,28 @@
     <div class="wrapper fadeInDown">
         <div id="formContent">
             <!-- Tabs Titles -->
-            <h2 class="active"> Sign In </h2>
-            <!-- Icon -->
-            <div class="fadeIn first">
-                <img src="#" id="icon" alt="User Icon" />
-            </div>
+            <h2 class="active"> login </h2>
 
-            <!-- Login Form -->
-            <form>
-                <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-                <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-                <input type="submit" class="fadeIn fourth" value="Log In">
+            <!-- فرم ورودی -->
+            <form method="post" action="{% url 'Accounts:login' %}">
+                {% csrf_token %}
+                <!-- ورودی ایمیل یا یوزر نیم-->
+                <input type="text" id="login" class="fadeIn second" name="username" placeholder="Email or Username">
+                <!-- ورودی پسوورد -->
+                <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password">
+                <!-- دکمه ثبت-->
+                <input type="submit" class="fadeIn fourth" value="LogIn">
+
             </form>
 
-            <!-- Remind Passowrd -->
+            <!-- فراموشی پسوورد  -->
             <div id="formFooter">
-                <a class="underlineHover" href="#">Forgot Password?</a>
+                <a class="underlineHover" href="{% url 'Accounts:password_reset' %}">Forgot Password?</a>
             </div>
-
+            <!-- ثبت نام -->
+            <div id="formFooter">
+                <a class="underlineHover" href="{% url 'Accounts:signup' %}">Sign up </a>
+            </div>
         </div>
     </div>
 </body>

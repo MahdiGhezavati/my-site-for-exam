@@ -16,7 +16,7 @@ urlpatterns = [
     #path("sitemap.xml",sitemap,{"sitemaps": sitemaps},name="django.contrib.sitemaps.views.sitemap",),
     #path("robots.txt" , include("robots.urls")),
     path("summernote/" , include("django_summernote.urls")),
-    #path("captcha" , include("captcha.urls")),
+    path("captcha" , include("captcha.urls")),
 ]
 if settings.MAINTENANCE_MODE:
    urlpatterns.insert(0, re_path(r'^', TemplateView.as_view(template_name='503.html'), name='maintenance'))

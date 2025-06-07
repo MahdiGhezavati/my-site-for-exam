@@ -31,9 +31,9 @@ def view_login(request):
                     messages.add_message(request , messages.ERROR , "The information has not been entered correctly !!" , extra_tags="error")
     else:
         return redirect("/")
-    return render(request,"Account/login.html")
+    return render(request,"Accounts/login.html")
 
-@login_required(login_url="/Account/login")
+@login_required(login_url="/Accounts/login")
 def view_logout(request):
     logout(request)
     return redirect("/")
@@ -44,11 +44,10 @@ def view_signup(request):
             form = CustomUserForm(request.POST)
             if form.is_valid():
                 form.save()
-                messages.add_message(request , messages.SUCCESS , "Registration was successful " , extra_tags="succ")
                 return redirect("/")
             
         form = CustomUserForm()
         context = {"form":form }
-        return render(request,"Account/signup.html",context)
+        return render(request,"Accounts/signup.html",context)
     else:
         return redirect("/")   

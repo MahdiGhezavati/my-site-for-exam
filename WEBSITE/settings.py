@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -19,20 +20,21 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "multi_captcha_admin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "webArt.apps.WebartConfig", # app 
-    "Artwork.apps.ArtworkConfig", # app
-    "Artist.apps.ArtistConfig", # app
-    "Accounts.apps.AccountsConfig", # app
-    "django_summernote", # app
-    "taggit", # app
-    "bootstrap5", # app
-
+    "webArt.apps.WebartConfig",  # app
+    "Artwork.apps.ArtworkConfig",  # app
+    "Artist.apps.ArtistConfig",  # app
+    "Accounts.apps.AccountsConfig",  # app
+    "django_summernote",  # app
+    "taggit",  # app
+    "bootstrap5",  # app
+    "captcha", #app
 ]
 
 MIDDLEWARE = [
@@ -101,7 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'Asia/Tehran'
+TIME_ZONE = "Asia/Tehran"
 
 USE_I18N = True
 
@@ -109,25 +111,24 @@ USE_TZ = True
 
 
 # تنظیمات مربوط به ریست کردن پسوورد و ارسال ایمیل
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "ghezavatimahdi7@gmail.com"
 EMAIL_HOST_PASSWORD = "gtfctsjpzrqdlauo"
 
 
-
 # settings for >>> Static files (CSS, JavaScript, Images)
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "static"
 STATICFILES_DIRS = [
     BASE_DIR / "statics",
 ]
 
-# settings for >>> Media files 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# settings for >>> Media files
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -135,6 +136,11 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # برای زمان تعمیر و تغییرات دسترسی بسته باشه
-MAINTENANCE_MODE = False 
+MAINTENANCE_MODE = False
 
 SUMMERNOTE_THEME = "bs4"
+
+# captcha for admin
+MULTI_CAPTCHA_ADMIN = {
+    "engine": "simple-captcha",
+}

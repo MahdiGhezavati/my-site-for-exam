@@ -3,32 +3,57 @@
 
 <!--  اتصال به صفهه پایه با بلوک بادی و اند بلوک -->
 {% block body %}
+<style>
+    .fonnet {
+        font-size: medium;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        display: inline-block;
+        margin-left: 80px;
+    }
 
+    .black-text {
+        color: rgb(0, 0, 0);
+    }
+
+    .form-control-edit {
+        background: #c3c3c3;
+        color: #000000;
+    }
+</style>
 
 <section class="templatemo-container padding-0">
-
     <div class="templatemo-block-left contact">
         <div class="templatemo-contact-info">
             <h2 class="text-uppercase">Contact...</h2>
             <hr class="templatemo-section-header-hr w-120">
             <p class="text-uppercase templatemo-section-subheader">write your comments </p>
             <p class="margin-bottom-20">i would be happy to read your comments and make the best of them!</p>
-            <form action="#" method="post" class="tm-contact-form">
+            <form action="{% url 'webArt:contact' %}" method="post" class="tm-contact-form">
+                {% csrf_token %}
                 <div class="tm-contact-form">
                     <div class="form-group">
-                        <input type="text" id="contact_name" class="form-control" placeholder="Name..." />
+                        <input type="text" name="name" id="contact_name" class="form-control form-control-edit"
+                            placeholder="Name..." />
                     </div>
                     <div class="form-group">
-                        <input type="email" id="contact_email" class="form-control" placeholder="Email..." />
+                        <input type="email" name="email" id="contact_email" class="form-control form-control-edit"
+                            placeholder="Email..." />
                     </div>
                     <div class="form-group">
-                        <input type="text" id="contact_subject" class="form-control" placeholder="Subject..." />
+                        <input type="text" name="subject" id="contact_subject" class="form-control form-control-edit"
+                            placeholder="Subject..." />
                     </div>
                     <div class="form-group">
-                        <textarea id="contact_message" class="form-control" rows="8"
+                        <textarea id="contact_message" name="message" class="form-control form-control-edit" rows="8"
                             placeholder="Message..."></textarea>
                     </div>
                 </div>
+                <div>
+                    <div class="form-control-edit">
+                        {{form.captcha}}
+                    </div><br><br>
+                </div>  
                 <button type="submit" name="submit" class="btn text-uppercase templatemo-btn-gold">Submit</button>
             </form>
         </div>

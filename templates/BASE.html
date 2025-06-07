@@ -33,23 +33,26 @@
                         <hr class="templatemo-header-hr">
                         <p class="text-uppercase templatemo-slogan">Life is more beautiful with art...</p>
                         {% if request.user.is_authenticated %}
-                        <h3><a href="#" class="text-uppercase templatemo-slogan"><strong>LOGIN as {{request.user.username}} </strong> </a></h3>
-                        <h3><a href="{% url 'Accounts:logout' %}" class="text-uppercase templatemo-slogan"><strong>LOGOUT</strong> </a></h3>
+                        <h3><a href="#" class="text-uppercase templatemo-slogan"><strong>LOGIN as
+                                    {{request.user.username}} </strong> </a></h3>
+                        <h3><a href="{% url 'Accounts:logout' %}"
+                                class="text-uppercase templatemo-slogan"><strong>LOGOUT</strong> </a></h3>
                         {% else %}
                         <h3><a href="{% url 'Accounts:login' %}"
                                 class="text-uppercase templatemo-slogan"><strong>LOGIN</strong> </a></h3>
-                        <h3><a href="#" class="text-uppercase templatemo-slogan"><strong>sign up </strong> </a></h3>
+                        <h3><a href="{% url 'Accounts:signup' %}" class="text-uppercase templatemo-slogan"><strong>sign
+                                    up </strong> </a></h3>
                         {% endif %}
                     </div>
                 </div>
                 <div class="templatemo-header-left-overlay"></div>
                 <div class="templatemo-social templatemo-gray-bg">
                     <ul>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-vimeo-square"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                        <li><a href="#"><i class="fa fa-send-o"></i></a></li>
+                        <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
+
                     </ul>
                 </div>
             </div>
@@ -78,7 +81,7 @@
 
     {% endblock %}
 
-    <!-- "About Us" -->
+    <!-- "footer Art is ..." -->
     <section class="templatemo-dark-bg">
         <div class="container">
             <div class="row">
@@ -89,21 +92,23 @@
                     <hr class="templatemo-about-hr">
                     <p class="gray-text about-us-text">
                         The aim of art is to represent not the outward appearance of things, but their inward
-                        significance. - Aristotle
+                        significance. - <strong>Aristotle</strong>
                         <br><br>
-                        Every child is an artist. The problem is how to remain an artist once we grow up. - Pablo
-                        Picasso
+                        Every child is an artist. The problem is how to remain an artist once we grow up. -
+                        <strong>Pablo Picasso</strong>
+
                         <br><br>
                         The artist is not a special kind of person; rather each person is a special kind of artist. -
-                        Ananda Coomaraswamy
+                        <strong>Ananda Coomaraswamy</strong>
                         <br><br>
-                        A painting is music you can see and music is a painting you can hear. - Miles Davis
+                        A painting is music you can see and music is a painting you can hear. - <strong>Miles
+                            Davis</strong>
                     </p>
                 </div>
             </div>
         </div>
     </section>
-    <!-- end "About Us" -->
+    <!-- end "Art is ..." -->
 
     <!-- JS -->
     <script type="text/javascript" src="{% static 'js/jquery-1.11.2.min.js' %}"></script> <!-- jQuery -->

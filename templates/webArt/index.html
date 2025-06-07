@@ -3,140 +3,187 @@
 
 <!--  اتصال به صفهه پایه با بلوک بادی و اند بلوک -->
 {% block body %}
-        <!-- "New Arrivals" -->
-        <section class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="text-uppercase"> Learn and see more </h2>
-                    <hr class="templatemo-section-header-hr">
-                    <p class="text-uppercase templatemo-section-subheader"> Latest Post ... </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
-                    <div class="new-arrival-container">
-                        <div class="new-arrival-overlay">
-                            <h3 class="text-uppercase new-arrival-title">
-                                <span class="font-script">Summer</span>
-                                <span class="smaller-text">Collection</span>
-                            </h3>
-                        </div>
-                        <img src="{% static 'img/new-arrival-1.jpg' %}" alt="New Arrival 1" class="img-responsive">
+<style>
+	.fonet {
+		font-family: fantasy;
+		font-size: xx-large;
+        font-size: 60px;
+	}
+</style>
+<section class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="text-uppercase"> Learn and see more </h2>
+            <hr class="templatemo-section-header-hr">
+            <p class="text-uppercase templatemo-section-subheader"> Select section... </p>
+        </div>
+    </div>
+    <div class="row">
+        <a href="{% url 'Artwork:Artwork' %}">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
+                <div class="new-arrival-container product-type-container ">
+                    <div class="new-arrival-overlay product-type-overlay">
+                        <h3 class="text-uppercase new-arrival-title product-type-info">
+                            <span class="font-family">Art works</span>
+                            <span class="smaller-text">Collection</span>
+                        </h3>
                     </div>
+                    <img src="{% static 'img/new-arrival-1.jpg' %}" alt="New Arrival 1" class="img-responsive">
                 </div>
             </div>
-        </section> <!-- end "New Arrivals" -->
+        </a>
 
-        <!-- "Product Type" -->
-        <section class="templatemo-gray-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h2 class="text-uppercase">Why Painting and our site ? </h2>
-                        <hr class="templatemo-section-header-hr">
-                        <p class="text-uppercase templatemo-section-subheader"> Our opinions </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <!-- Left block, images -->
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="product-type-container">
-                                    <div class="product-type-overlay">
-                                        <div class="product-type-info">
-                                            <i class="fa fa-search fa-2x gold-text"></i>
-                                            <h3 class="gold-text text-uppercase">lorem ipsums</h3>
-                                            <p class="text-uppercase white-text">Mauris Inera Justo</p>
-                                        </div>
-                                    </div>
-                                    <img src="{% static 'img/product-type-1.jpg' %}" alt="Product Type 1" class="product-type-img img-responsive">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="product-type-container">
-                                    <div class="product-type-overlay">
-                                        <div class="product-type-info">
-                                            <i class="fa fa-search fa-2x gold-text"></i>
-                                            <h3 class="gold-text text-uppercase">lorem ipsums</h3>
-                                            <p class="text-uppercase white-text">Mauris Inera Justo</p>
-                                        </div>
-                                    </div>
-                                    <img src="{% static 'img/product-type-2.jpg' %}" alt="Product Type 2" class="product-type-img img-responsive">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="product-type-container">
-                                    <div class="product-type-overlay">
-                                        <div class="product-type-info">
-                                            <i class="fa fa-search fa-2x gold-text"></i>
-                                            <h3 class="gold-text text-uppercase">lorem ipsums</h3>
-                                            <p class="text-uppercase white-text">Mauris Inera Justo</p>
-                                        </div>
-                                    </div>
-                                    <img src="{% static 'img/product-type-3.jpg' %}" alt="Product Type 3" class="product-type-img img-responsive">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="product-type-container">
-                                    <div class="product-type-overlay">
-                                        <div class="product-type-info">
-                                            <i class="fa fa-search fa-2x gold-text"></i>
-                                            <h3 class="gold-text text-uppercase">lorem ipsums</h3>
-                                            <p class="text-uppercase white-text">Mauris Inera Justo</p>
-                                        </div>
-                                    </div>
-                                    <img src="{% static 'img/product-type-4.jpg' %}" alt="Product Type 4" class="product-type-img img-responsive">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Right block, text -->
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="gold-border">
-                            <div class="product-type-message">
-                                <h3 class="text-uppercase gray-text product-type-message-title"><b> Why painting and drawing ? and why our site ?</b></h3>
-                                <p class="gray-text"> Painting and drawing are not merely hobbies or ways to pass the time; they are fundamental forms of human expression and hold significant value in numerous aspects of our lives and society. From an individual perspective, engaging in painting and drawing fosters creativity, enhances problem-solving skills, and provides a powerful outlet for emotional expression. The act of visualizing an idea and translating it onto a surface requires innovative thinking and the ability to make countless artistic decisions. This process strengthens cognitive flexibility and can be applied to various challenges in life. Furthermore, the focused nature of artistic creation can be meditative, reducing stress and anxiety while promoting a sense of accomplishment and self-esteem. The tangible result of a painting or drawing serves as a personal record of one's thoughts, feelings, and experiences, creating a visual diary that can be revisited and cherished.</p>
-                                 <p class="gray-text">Here we examine and explain paintings and drawings to learn more about art! Because art never dies...</p>       
-                            </div>
-                        </div>
-                    </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
+            <div class="new-arrival-container">
+                <div class="new-arrival-overlay">
+                    <h3 class="text-uppercase ">
+                        <br><br><br><br><br><br><br><br><br><br><br><br>
+                        <p class="fonet"> choose what to read and watch?
+                        </p>
+                    </h3>
                 </div>
             </div>
-        </section> <!-- end Product Type -->
+        </div>
+        <a href="{% url 'Artist:blog-Artist'%}">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
+                <div class="new-arrival-container product-type-container">
+                    <div class="new-arrival-overlay product-type-overlay">
+                        <h3 class="text-uppercase new-arrival-title product-type-info">
+                            <span class="font-family">Artists </span>
+                            <span class="smaller-text">Collection</span>
+                        </h3>
+                    </div>
+                    <img src="{% static 'img/new-arrival-1.jpg' %}" alt="New Arrival 1" class="img-responsive">
+                </div>
+            </div>
+        </a>
+    </div>
+</section> <!-- end "New Arrivals" -->
 
-        <!-- maybe you want too see -->
-        <section class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="text-uppercase">Maybe you want to see! </h2>
-                    <hr class="templatemo-section-header-hr">
-                    <p class="text-uppercase templatemo-section-subheader"> Sections ... </p>
+<!-- "why paint!? " -->
+<section class="templatemo-gray-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="text-uppercase">Why Painting and our site ? </h2>
+                <hr class="templatemo-section-header-hr">
+                <p class="text-uppercase templatemo-section-subheader"> Our opinions </p>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Left block, images -->
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+                <div class="row">
+                    <br><br><br><br>
+                    {% for post in posts|slice:"1:"%}
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="product-type-container">
+                            <div class="product-type-overlay">
+                                <div>
+                                    <i class="fa fa-2x gold-text"></i>
+                                    <h3 class="gold-text text-uppercase">{{post.title}}</h3>
+                                    <p class="text-uppercase white-text">{{post.artist}}</p>
+                                </div>
+                            </div>
+                            <img src="{{post.image.url}}" alt="Product Type 1" class="product-type-img img-responsive">
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% for Artist in Artists|slice:"1:"%}
+                    <br><br>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="product-type-container">
+                            <div class="product-type-overlay">
+                                <div>
+                                    <i class="fa fa-2x gold-text"></i>
+                                    <h3 class="gold-text text-uppercase">{{Artist.title}}</h3>
+                                </div>
+                            </div>
+                            <img src="{{Artist.image.url}}" alt="Product Type 1"
+                                class="product-type-img img-responsive">
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
-            <!-- Arts of Artist -->
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 margin-bottom-10 text-center">
-                    <h3 class="text-uppercase"><span class="gold-text">Art</span> of Artist </h3>
-                    <p> Some of the works of great Artist </p>
-                    <a href="#" class="text-uppercase btn-gray-bordered">View More</a>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 margin-bottom-10 text-center">
-                    <img src="{% static 'img/men-1.jpg' %}" alt="Men fashion 1" class="img-fashion gold-border">
-                </div>
-            </div><hr>
-            <!-- Artist -->
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 margin-bottom-10 text-center">
-                    <h3 class="text-uppercase"><span class="gold-text">Artist </span> from history </h3>
-                    <p>Artists from the heart of history .</p>
-                    <a href="#" class="text-uppercase btn-gray-bordered">View More</a>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 margin-bottom-10 text-center">
-                    <img src="{% static 'img/product-type-1.jpg' %}" alt="Women fashion 1" class="img-fashion gold-border">
+            <!-- Right block, text -->
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="gold-border">
+                    <div class="product-type-message">
+                        <h3 class="text-uppercase gray-text product-type-message-title"><b> Why painting and drawing ?
+                                and why our site ?</b></h3>
+                        <p class="gray-text"> Painting and drawing are not merely hobbies or ways to pass the time; they
+                            are fundamental forms of human expression and hold significant value in numerous aspects of
+                            our lives and society. From an individual perspective, engaging in painting and drawing
+                            fosters creativity, enhances problem-solving skills, and provides a powerful outlet for
+                            emotional expression. The act of visualizing an idea and translating it onto a surface
+                            requires innovative thinking and the ability to make countless artistic decisions. This
+                            process strengthens cognitive flexibility and can be applied to various challenges in life.
+                            Furthermore, the focused nature of artistic creation can be meditative, reducing stress and
+                            anxiety while promoting a sense of accomplishment and self-esteem. The tangible result of a
+                            painting or drawing serves as a personal record of one's thoughts, feelings, and
+                            experiences, creating a visual diary that can be revisited and cherished.</p>
+                        <p class="gray-text">Here we examine and explain paintings and drawings to learn more about art!
+                            Because art never dies...</p>
+                    </div>
                 </div>
             </div>
-        </section> <!-- end "Our Products" -->
+        </div>
+    </div>
+</section> <!-- end Product Type -->
+
+<!-- maybe you want too see -->
+<section class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="text-uppercase">Maybe you want to see! </h2>
+            <hr class="templatemo-section-header-hr">
+            <p class="text-uppercase templatemo-section-subheader"> Sections ... </p>
+        </div>
+    </div>
+    <!-- Arts of Artist -->
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 margin-bottom-10 text-center ">
+            <h3 class="text-uppercase"><span class="gold-text">Art</span> of Artist </h3>
+            <p> Some of the works of great Artist </p>
+            <a href="{% url 'Artwork:Artwork'%}" class="text-uppercase btn-gray-bordered">View More</a>
+        </div>
+        {% for post in posts %}
+        <a href="{% url 'Artwork:single-Artwork' pid=post.id %}">
+            <div class="product-type-container">
+                <div class="product-type-overlay">
+                    <div class="product-type-info">
+                        <h3 class="text-uppercase white-text">{{post.title}}</h3>
+                        <p class="text-uppercase white-text">{{post.artist}}</p>
+                    </div>
+                </div>
+                <img src="{{post.image.url}}" alt="Men fashion 1"
+                    class="img-fashion gold-border post-img img-responsive product-type-img fa.white-border gold-border">
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    <hr>
+    <!-- Artist -->
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 margin-bottom-10 text-center">
+            <h3 class="text-uppercase"><span class="gold-text">Artist </span> from history </h3>
+            <p>Artists from the heart of history .</p>
+            <a href="{% url 'Artist:blog-Artist' %}" class="text-uppercase btn-gray-bordered">View More</a>
+        </div>
+        {% for Artist in Artists %}
+        <a href="{% url 'Artist:single' pid=Artist.id %}">
+            <div class="product-type-container">
+                <div class="product-type-overlay">
+                    <div class="product-type-info">
+                        <h3 class="text-uppercase white-text">{{Artist.title}}</h3>
+                    </div>
+                </div>
+                <img src="{{Artist.image.url}}" alt="Men fashion 1"
+                    class="img-fashion gold-border post-img img-responsive product-type-img fa.white-border gold-border">
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section> <!-- end "Our Products" -->
 {% endblock %}
