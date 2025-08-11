@@ -13,7 +13,7 @@
     "disks": [
         {
             "name": "static",
-            "mountTo": "staticfiles"
+            "mountTo": "statics"
         },
         {
             "name": "media",
