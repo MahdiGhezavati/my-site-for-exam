@@ -127,7 +127,7 @@ else:
 
 # settings for >>> Static files (CSS, JavaScript, Images)
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "statics"
+STATIC_ROOT = BASE_DIR / "static"
 STATICFILES_DIRS = [
     BASE_DIR / "statics",
 ]
