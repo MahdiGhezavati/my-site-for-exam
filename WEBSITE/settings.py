@@ -99,7 +99,7 @@ else:     # production
             "NAME": config("NAME",default="project_db"),
             "USER": config("USER", default="postgres"),
             "PASSWORD":config("PASSWORD", default="mahdi"),
-            "HOST": config("HOST", default="localhost"),
+            "HOST": config("HOST"),
             "PORT": config("PORT", cast=int , default="5432"),
         }
     }
