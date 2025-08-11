@@ -74,33 +74,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "WEBSITE.wsgi.application"
 
-# تنظیمات دیتابیس برای دو حالت
-"""
-if DEBUG:    # development 
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": "project_db",
-            "USER":"postgres",
-            "PASSWORD":"mahdi",
-            "HOST":"localhost",
-            "PORT":"5432",
-        }
-    }
-
-
-else:     # production
-    DATABASES = {
-        "default": {
-            "ENGINE": config("ENGINE",default="django.db.backends.postgresql"),
-            "NAME": config("NAME",default="project_db"),
-            "USER": config("USER", default="postgres"),
-            "PASSWORD":config("PASSWORD", default="mahdi"),
-            "HOST": config("HOST"),
-            "PORT": config("PORT", cast=int , default="5432"),
-        }
-    }
-    """
 DATABASES = {
     "default": {
         "ENGINE": config("ENGINE", default="django.db.backends.postgresql"),
