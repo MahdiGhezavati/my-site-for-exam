@@ -7,7 +7,7 @@
   <title>sign up</title>
   <style>
     html {
-      background-image: url(/static/img/dash-bg-03.jpg);
+      background-image: url(/static/img/back-login.jpg);
       background-size: cover;
       background-repeat: no-repeat;
       height: 120%;
@@ -308,11 +308,92 @@
     * {
       box-sizing: border-box;
     }
+
+    .message-container {
+      position: fixed;
+      /* یا absolute، بسته به جایگاه دلخواه */
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      max-width: 600px;
+      z-index: 1000;
+      text-align: center;
+    }
+
+    .alert {
+      padding: 15px;
+      margin-bottom: 10px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      display: flex;
+      /* برای هم‌راستا شدن متن و دکمه */
+      justify-content: space-between;
+      align-items: center;
+      opacity: 10;
+      transition: opacity 0.2s ease-out;
+      /* انیمیشن محو شدن */
+    }
+
+    .alert.fade-out {
+      opacity: 0;
+    }
+
+    .alert.success {
+      color: #3c763d;
+      background-color: #dff0d8;
+      border-color: #d6e9c6;
+    }
+
+    .alert.error {
+      color: #a94442;
+      background-color: #f2dede;
+      border-color: #ebccd1;
+    }
+
+    .alert.info {
+      color: #31708f;
+      background-color: #d9edf7;
+      border-color: #bce8f1;
+    }
+
+    .alert.warning {
+      color: #8a6d3b;
+      background-color: #fcf8e3;
+      border-color: #faebcc;
+    }
+
+    .close-btn {
+      margin-left: 15px;
+      color: inherit;
+      /* رنگ دکمه مثل متن باشه */
+      font-weight: bold;
+      float: right;
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .close-btn:hover {
+      color: black;
+    }
   </style>
 </head>
 
 <body>
-
+  <div class="message-container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert {% if message.tags %}{{ message.tags }}{% endif %}">
+      <span>{{ message }}</span>
+      <span class="close-btn"
+        onclick="this.parentElement.classList.add('fade-out'); setTimeout(() => this.parentElement.style.display='none', 600);">
+        &times; </span>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
 
   <div class="wrapper fadeInDown">
     <div id="formContent">

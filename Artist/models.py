@@ -3,9 +3,9 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from taggit.managers import TaggableManager
 
-class Post(models.Model):
+class Artist(models.Model):
     author = models.ForeignKey(User , on_delete=models.SET_NULL,null=True)
-    image  = models.ImageField(upload_to="media/Artist" , default="media/Artist/default.jpg")
+    image  = models.ImageField(upload_to="Artist" , default="media/Artist/default.jpg")
     title = models.CharField(max_length=255)
     content = models.TextField()
     content_view = models.IntegerField(default = 1)
@@ -28,5 +28,5 @@ class Post(models.Model):
         return f" {self.id} - {self.title} "
     
     def get_absolute_url(self):
-        return reverse('blog:single',kwargs={'pid': self.id})
+        return reverse('Artist:single',kwargs={'pid': self.id})
     

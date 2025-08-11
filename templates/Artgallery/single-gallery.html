@@ -1,0 +1,16 @@
+{% extends 'BASE.html' %}
+{% load static %}
+{% block body %}
+<style>
+    img{
+        max-width: 900px;
+        max-height: 800px;
+    }
+</style>
+<br><br>
+<div class="post-img-container img">
+    <img src="{{Art.image.url}}" alt="image for this post" style="margin-left:70px;" height="70%" width="70%">
+    <br><br><br>
+    <button class="btn text-uppercase templatemo-btn-gold"><a href="{% url 'Artgallery:gallery'%}" class="fonet">back to gallery</a></button>
+</div>
+{% endblock %}

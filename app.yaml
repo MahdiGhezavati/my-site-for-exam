@@ -1,0 +1,15 @@
+runtime: python313
+
+entyrpoint: gunicorn -b : $PORT WEBSITE.wsgi
+
+
+handlers:
+
+- url: /static
+
+  static_dir: staticfiles/
+
+- url: /.* 
+  script: auto
+
+application_readable: True #added for django-compressor ##add this

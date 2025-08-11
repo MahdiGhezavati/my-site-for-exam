@@ -4,12 +4,19 @@
 <!--  اتصال به صفهه پایه با بلوک بادی و اند بلوک -->
 {% block body %}
 <style>
-    .fonet{
-        font-family:fantasy;
+    .fonet-x {
+        font-family: fantasy;
         font-size: x-large;
     }
-    .fonet-title{
+
+    .fonet-x-title {
         font-size: xx-large;
+    }
+
+    .fonet {
+        font-family: fantasy;
+        font-size: xx-large;
+        font-size: 60px;
     }
 </style>
 <!-- "ALL POST " -->
@@ -27,29 +34,31 @@
             <div class="row">
                 <div class="col-lg-12">
                     <!-- حلقه زدن برای پست ها -->
-                    {% for post in posts %}
+                    {% for Art in Arts %}
 
                     <article class="templatemo-blog-post">
                         <div class="post-img-container">
-                            <img src="{{post.image.url}}" alt="Post 1" class="post-img img-responsive" height="600px"
-                                width="650px">
+                            <a href="{% url 'Artist:single' pid=Art.id %}">
+                                <img src="{{Art.image.url}}" alt="Post 1" class="post-img img-responsive" height="600px"
+                                    width="650px"></a>
                             <div class="templatemo-post-social">
                             </div>
                             <div class="templatemo-post-date gold-text">
                                 <div>
-                                    <div class="text-uppercase fonet">{{post.title}}</div>
+                                    <div class="text-uppercase fonet-x">{{Art.title}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="post-title">
-                            <a class="posts-title" href="{% url 'Artist:single' pid=post.id %}">
-                                <h3 class="text-uppercase black-text fonet fonet-title">{{post.title}}</h3><hr class="gold-hr">
+                            <a class="posts-title" href="{% url 'Artist:single' pid=Art.id %}">
+                                <h3 class="text-uppercase black-text fonet-x fonet-x-title">{{Art.title}}</h3>
+                                <hr class="gold-hr">
                             </a>
                         </div>
                         <div class="post-excerpt gray-text">
-                            <p>{{post.content|truncatewords:4|safe}}.</p>
+                            <p>{{Art.content|truncatewords:4|safe}}.</p>
                         </div>
-                        <a href="{% url 'Artist:single' pid=post.id %}" class="gray-text margin-top-10 post-read-more">
+                        <a href="{% url 'Artist:single' pid=Art.id %}" class="gray-text margin-top-10 post-read-more">
                             <i class="fa fa-arrow-circle-o-right fa-2x v-align-middle"></i> Read More
                         </a>
                     </article>
@@ -61,25 +70,25 @@
                     <!-- بخش مربوط به تغییر صفهه در نوار انتخابی -->
                     <div class="pagination-wrap blog-post-pagination">
                         <ul class="pagination">
-                            {% if posts.has_previous %}
+                            {% if Arts.has_previous %}
                             <li>
-                                <a href="?page={{ posts.prev_page_number }}" aria-label="prev">
+                                <a href="?page={{ Arts.prev_page_number }}" aria-label="prev">
                                     <span aria-hidden="true"><i> Back </i></span>
                                 </a>
                             </li>
                             {% endif %}
 
-                            {% for i in posts.paginator.page_range %}
-                            {% if posts.number == i %}
+                            {% for i in Arts.paginator.page_range %}
+                            {% if Arts.number == i %}
                             <li class="page-item active"><a href="?page={{i}}" class="page-link">{{i}}</a></li>
                             {% else %}
                             <li class="page-item"><a href="?page={{i}}" class="page-link">{{i}}</a></li>
                             {% endif %}
                             {% endfor %}
 
-                            {% if posts.has_next %}
+                            {% if Arts.has_next %}
                             <li>
-                                <a href="?page={{ posts.next_page_number }}" aria-label="Next">
+                                <a href="?page={{ Arts.next_page_number }}" aria-label="Next">
                                     <span aria-hidden="true"><i> Next </i></span>
                                 </a>
                             </li>
@@ -96,7 +105,7 @@
             <br><br>
             <div class="aside-block">
                 <h4 class="text-uppercase"><i>Maybe want too see</i></h4>
-                {% for Artwork in Artworks|slice:":5" %}
+                {% for Artwork in Artworks|slice:"3:8" %}
                 <hr class="gold-hr">
                 <p class="text-uppercase product-type-container ">
                     <a href="{% url 'Artwork:single-Artwork' pid=Artwork.id %}" class="black-text">
@@ -106,7 +115,6 @@
                         <br>
                         <strong> &blacktriangleright; {{ Artwork.title}}</strong></a>
                 </p>
-                <p> {{Artwork.content|truncatewords:10|safe}}</p>
                 {% endfor %}
             </div> <!-- /.aside-block -->
         </aside>

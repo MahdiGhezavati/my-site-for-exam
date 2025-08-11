@@ -11,9 +11,15 @@
 		margin: 0;
 	}
 
+	.fonet-x {
+		font-family: fantasy;
+		font-size: xx-large;
+	}
+
 	.fonet {
 		font-family: fantasy;
 		font-size: xx-large;
+		font-size: 60px;
 	}
 
 	.fonnet {
@@ -47,9 +53,9 @@
 			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
 				<div class="row">
 					<div class="product-type-message">
-						<h3 class="text-uppercase fonet">{{post.title}}</h3>
+						<h3 class="text-uppercase fonet-x">{{artist.title}}</h3>
 						<hr class="gold-hr">
-						<p>{{post.content|safe}}</p>
+						<p>{{artist.content|safe}}</p>
 					</div>
 				</div>
 			</div>
@@ -57,18 +63,21 @@
 			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="product-type-container">
-						<img src="{{post.image.url}}" alt="Product Type 1" class="image-edit">
+						<img src="{{artist.image.url}}" alt="Product Type 1" class="image-edit">
 						<hr class="gold-hr hr-edit">
-						<p class="text-center text-uppercase fonet" style="font-size: large;"><span class="fa fa-pencil-square"></span> by
-							{{post.author}}</p>
+						<p class="text-center text-uppercase fonet-x" style="font-size: large;"><span
+								class="fa fa-pencil-square"></span> by
+							{{artist.author}}</p>
 						<hr class="gold-hr hr-edit">
-						<p class="text-center text-uppercase fonet " style="font-size: large;"><span class="fa fa-eye text-center"></span> 
-							{{post.content_view}} views </p>
+						<p class="text-center text-uppercase fonet-x " style="font-size: large;"><span
+								class="fa fa-eye text-center"></span>
+							{{artist.content_view}} views </p>
 						<hr class="gold-hr hr-edit">
 					</div>
 					<br><br><br>
 					{% if works %}
-					<h4 class="text-uppercase"><strong>best</strong><span class="fonet"> {{post.title}} </span><strong>works</strong></h4>
+					<h4 class="text-uppercase"><strong>best</strong><span class="fonet-x"> {{artist.title}}
+						</span><strong>works</strong></h4>
 					{% for work in works %}
 					<hr class="gold-hr hr-edit">
 					<p class="text-uppercase product-type-container ">
@@ -79,7 +88,6 @@
 							<br>
 							<strong> &blacktriangleright; {{ work.title}}</strong></a>
 					</p>
-					<p> {{work.content|truncatewords:10|safe}}</p>
 					{% endfor %}
 					{% endif %}
 				</div>

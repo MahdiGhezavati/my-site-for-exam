@@ -11,35 +11,34 @@
             <p class="text-uppercase templatemo-section-subheader">works by prominent painters and designners</p>
         </div>
     </div>
-    {% for post in posts %}
+    {% for Art in Arts %}
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 margin-bottom-10 text-center">
             <br><br><br>
-            <a href="{% url 'Artwork:single-Artwork' pid=post.id %}">
+            <a href="{% url 'Artwork:single-Artwork' pid=Art.id %}">
             <div class="product-type-container">
                 <div class="product-type-overlay">
                     <div class="product-type-info">
-                        <i class="fa fa-search fa-2x white-text white-border"></i>
-                        <h3 class="text text-uppercase">{{post.title}}</h3>
-                        <p class="text-uppercase">{{post.artist}}</p>
+                        <h3 class="text">{{Art.title}}</h3>
+                        <p class="text-uppercase">{{Art.artist}}</p>
                     </div>
                 </div>
-                <img src="{{post.image.url}}" alt="Men fashion 1" class="product-type-img img-collection gold-border">
+                <img src="{{Art.image.url}}" alt="Men fashion 1" class="product-type-img img-collection gold-border">
             </div></a>
         </div>
         <aside class="col-lg-8 col-md-4 templatemo-blog-post-aside">
             <div class="aside-block">
                 <div class="col-lg-12">
-                    <h2 class=" fa text-uppercase"><strong>{{post.title}} </strong></h2>
+                    <h2 class=" fa text-uppercase"><strong>{{Art.title}} </strong></h2>
                     <hr class="templatemo-section-header-hr">
-                    <p class="text-uppercase templatemo-section-subheader">A work by <strong>{{post.artist}}</strong></p>
+                    <p class="text-uppercase templatemo-section-subheader">A work by <strong>{{Art.artist}}</strong></p>
                 </div>
             </div>
             <div class="col-lg-90 col-md-6 col-sm-12 col-xs-12">
                 <div>
                     <div class="text-uppercase col-sm-12">
-                        <p> {{post.content|truncatewords:15|safe}}</p>
-                        <i class="fa fa-arrow-circle-o-right fa-2x v-align-middle gold-text"></i> <a href="{% url 'Artwork:single-Artwork' pid=post.id %}"class="gold-text"> <strong>Read More...</strong></a>
+                        <p> {{Art.content|truncatewords:15|safe}}</p>
+                        <i class="fa fa-arrow-circle-o-right fa-2x v-align-middle gold-text"></i> <a href="{% url 'Artwork:single-Artwork' pid=Art.id %}"class="gold-text"> <strong>Read More...</strong></a>
                     </div>
                 </div>
             </div>
@@ -54,25 +53,25 @@ _______________________________________________
             <!-- بخش مربوط به تغییر صفهه در نوار انتخابی -->
             <div class="pagination-wrap blog-post-pagination">
                 <ul class="pagination">
-                    {% if posts.has_previous %}
+                    {% if Arts.has_previous %}
                     <li>
-                        <a href="?page={{ posts.prev_page_number }}" aria-label="prev">
+                        <a href="?page={{ Arts.prev_page_number }}" aria-label="prev">
                             <span aria-hidden="true"><i> Back </i></span>
                         </a>
                     </li>
                     {% endif %}
 
-                    {% for i in posts.paginator.page_range %}
-                    {% if posts.number == i %}
+                    {% for i in Arts.paginator.page_range %}
+                    {% if Arts.number == i %}
                     <li class="page-item active"><a href="?page={{i}}" class="page-link">{{i}}</a></li>
                     {% else %}
                     <li class="page-item"><a href="?page={{i}}" class="page-link">{{i}}</a></li>
                     {% endif %}
                     {% endfor %}
 
-                    {% if posts.has_next %}
+                    {% if Arts.has_next %}
                     <li>
-                        <a href="?page={{ posts.next_page_number }}" aria-label="Next">
+                        <a href="?page={{ Arts.next_page_number }}" aria-label="Next">
                             <span aria-hidden="true"><i> Next </i></span>
                         </a>
                     </li>

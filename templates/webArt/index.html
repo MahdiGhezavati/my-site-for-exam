@@ -4,12 +4,13 @@
 <!--  اتصال به صفهه پایه با بلوک بادی و اند بلوک -->
 {% block body %}
 <style>
-	.fonet {
-		font-family: fantasy;
-		font-size: xx-large;
+    .fonet {
+        font-family: fantasy;
+        font-size: xx-large;
         font-size: 60px;
-	}
+    }
 </style>
+
 <section class="container">
     <div class="row">
         <div class="col-lg-12">
@@ -28,22 +29,23 @@
                             <span class="smaller-text">Collection</span>
                         </h3>
                     </div>
-                    <img src="{% static 'img/new-arrival-1.jpg' %}" alt="New Arrival 1" class="img-responsive">
+                    <img src="{% static 'img/napoleon.jpg' %}" alt="New Arrival 1" class="img-responsive">
                 </div>
             </div>
         </a>
 
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
-            <div class="new-arrival-container">
-                <div class="new-arrival-overlay">
-                    <h3 class="text-uppercase ">
-                        <br><br><br><br><br><br><br><br><br><br><br><br>
-                        <p class="fonet"> choose what to read and watch?
+            <div>
+                <div>
+                    <h3 class="text-uppercase">
+                        <br>
+                        <p class="fonet gold-text"> choose <br> what <br> to <br> read <br> and <br> watch?
                         </p>
                     </h3>
                 </div>
             </div>
         </div>
+
         <a href="{% url 'Artist:blog-Artist'%}">
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
                 <div class="new-arrival-container product-type-container">
@@ -53,7 +55,7 @@
                             <span class="smaller-text">Collection</span>
                         </h3>
                     </div>
-                    <img src="{% static 'img/new-arrival-1.jpg' %}" alt="New Arrival 1" class="img-responsive">
+                    <img src="{% static 'img/Van-Gogh.jpg' %}" alt="New Arrival 1" class="img-responsive">
                 </div>
             </div>
         </a>
@@ -72,59 +74,57 @@
         </div>
         <div class="row">
             <!-- Left block, images -->
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
-                <div class="row">
-                    <br><br><br><br>
-                    {% for post in posts|slice:"1:"%}
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="product-type-container">
-                            <div class="product-type-overlay">
-                                <div>
-                                    <i class="fa fa-2x gold-text"></i>
-                                    <h3 class="gold-text text-uppercase">{{post.title}}</h3>
-                                    <p class="text-uppercase white-text">{{post.artist}}</p>
-                                </div>
-                            </div>
-                            <img src="{{post.image.url}}" alt="Product Type 1" class="product-type-img img-responsive">
-                        </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="gold-border">
+                    <div class="product-type-message">
+                        <h3 class="text-uppercase fonet"> Why painting and drawing ?
+                            and why our site ?</h3>
+                        <p class="gray-text" style="font-size:large;">Why Painting, Drawing, and Why Our Site? 🎨
+                            More than just a simple hobby, painting and drawing are gateways to inner worlds and
+                            boundless creativity. 🤩 These art forms allow us to express our emotions, thoughts, and
+                            ideas through a visual language that words sometimes can’t capture. It doesn't matter if
+                            you're a professional artist or just enjoy doodling for relaxation; art helps you see the
+                            world from a different angle, discover details, and even challenge perceptions. 🤔 With
+                            every line and color you put on canvas or paper, you're essentially immortalizing a piece of
+                            your being, and that in itself is a unique and therapeutic experience. ✨
+                            Now, why our site? 🤔 Well, our site is like a grand gallery where new artworks are added
+                            every day. 🖼️ Here, you can not only find inspiration and view the works of other artists,
+                            but you also have a safe and vibrant platform to share your own art. 🤝 We've provided a
+                            space where you can display your works without judgment, receive feedback, and learn from
+                            the experiences of others. Our goal is to build an active and friendly art community where
+                            everyone can grow and share their art with the world. 💖 So, if you're looking for a place
+                            where you can both learn and be seen, our site is the best choice! .</p>
+                        <p class="gray-text">Here we examine and explain paintings and drawings to learn more about art!
+                            Because art never dies🫀...!</p>
                     </div>
-                    {% endfor %}
-                    {% for Artist in Artists|slice:"1:"%}
-                    <br><br>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="product-type-container">
-                            <div class="product-type-overlay">
-                                <div>
-                                    <i class="fa fa-2x gold-text"></i>
-                                    <h3 class="gold-text text-uppercase">{{Artist.title}}</h3>
-                                </div>
-                            </div>
-                            <img src="{{Artist.image.url}}" alt="Product Type 1"
-                                class="product-type-img img-responsive">
-                        </div>
-                    </div>
-                    {% endfor %}
                 </div>
             </div>
             <!-- Right block, text -->
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="gold-border">
                     <div class="product-type-message">
-                        <h3 class="text-uppercase gray-text product-type-message-title"><b> Why painting and drawing ?
-                                and why our site ?</b></h3>
-                        <p class="gray-text"> Painting and drawing are not merely hobbies or ways to pass the time; they
-                            are fundamental forms of human expression and hold significant value in numerous aspects of
-                            our lives and society. From an individual perspective, engaging in painting and drawing
-                            fosters creativity, enhances problem-solving skills, and provides a powerful outlet for
-                            emotional expression. The act of visualizing an idea and translating it onto a surface
-                            requires innovative thinking and the ability to make countless artistic decisions. This
-                            process strengthens cognitive flexibility and can be applied to various challenges in life.
-                            Furthermore, the focused nature of artistic creation can be meditative, reducing stress and
-                            anxiety while promoting a sense of accomplishment and self-esteem. The tangible result of a
-                            painting or drawing serves as a personal record of one's thoughts, feelings, and
-                            experiences, creating a visual diary that can be revisited and cherished.</p>
-                        <p class="gray-text">Here we examine and explain paintings and drawings to learn more about art!
-                            Because art never dies...</p>
+                        <h3 class="text-uppercase fonet"> The Value of Art & Why Painting is Crucial to History ?</h3>
+                        <p class="gray-text" style="font-size: larger;">What is the value of art?<br> Art is a fundamental
+                            expression of human creativity, emotions, and ideas. Its value lies in providing aesthetic
+                            pleasure, stimulating our senses and emotions. <br> It offers a deep way to express and
+                            communicate feelings that words often can't capture. <br> Art also encourages critical
+                            thinking and new perspectives, challenging us to see the world differently, 🤔 and nurturing
+                            our creativity and imagination, truly feeding the human spirit. <br>
+                            Why should we consider art, especially painting, an important part of history? Art and
+                            painting are crucial to history because they serve as a visual record of human history and
+                            culture; they're like time capsules, showing us the lives, beliefs, and environments of past
+                            civilizations. 🖼️ They're also reflections of social, political, and economic contexts, as
+                            art often mirrors the conditions of its time, helping us understand the forces that shaped
+                            societies. 🌍 Furthermore, art is an expression of philosophical and religious beliefs, with
+                            many artworks embodying deep spiritual and philosophical ideas from throughout history. <br>
+                            Paintings are also indicators of technological and artistic innovation, as changes in
+                            painting techniques reflect human ingenuity and progress. 💡 Finally, art provides a
+                            foundation for understanding contemporary culture, since our present culture is deeply
+                            rooted in historical artistic traditions, helping us grasp why we create and appreciate what
+                            we do today. 🏙️ In short, art, especially painting, isn't just about pretty pictures; it's
+                            a vibrant archive of human experience, a profound expression of our shared humanity, and an
+                            essential tool for understanding our past, present, and future!
+                        </p>
                     </div>
                 </div>
             </div>
@@ -144,20 +144,22 @@
     <!-- Arts of Artist -->
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 margin-bottom-10 text-center ">
-            <h3 class="text-uppercase"><span class="gold-text">Art</span> of Artist </h3>
+            <h3 class="text-uppercase"><span class="gold-text fonet">Art</span> of Artist </h3>
             <p> Some of the works of great Artist </p>
             <a href="{% url 'Artwork:Artwork'%}" class="text-uppercase btn-gray-bordered">View More</a>
         </div>
-        {% for post in posts %}
-        <a href="{% url 'Artwork:single-Artwork' pid=post.id %}">
+        {% for Art in Arts %}
+        <a href="{% url 'Artwork:single-Artwork' pid=Art.id %}">
             <div class="product-type-container">
                 <div class="product-type-overlay">
                     <div class="product-type-info">
-                        <h3 class="text-uppercase white-text">{{post.title}}</h3>
-                        <p class="text-uppercase white-text">{{post.artist}}</p>
+                        <h3
+                            class="text-uppercase gold-text                                                                                                                                     ">
+                            {{Art.title}}</h3>
+                        <p class="text-uppercase white-text">{{Art.artist}}</p>
                     </div>
                 </div>
-                <img src="{{post.image.url}}" alt="Men fashion 1"
+                <img src="{{Art.image.url}}" alt="Men fashion 1"
                     class="img-fashion gold-border post-img img-responsive product-type-img fa.white-border gold-border">
             </div>
         </a>
@@ -167,7 +169,7 @@
     <!-- Artist -->
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 margin-bottom-10 text-center">
-            <h3 class="text-uppercase"><span class="gold-text">Artist </span> from history </h3>
+            <h3 class="text-uppercase"><span class="gold-text fonet">Artist </span> from history </h3>
             <p>Artists from the heart of history .</p>
             <a href="{% url 'Artist:blog-Artist' %}" class="text-uppercase btn-gray-bordered">View More</a>
         </div>

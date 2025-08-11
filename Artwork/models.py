@@ -11,7 +11,7 @@ class category(models.Model):
 
 class Artwork(models.Model):
     artist = models.CharField(max_length=255)
-    image  = models.ImageField(upload_to="media/Art" , default="media/Art/default.jpg")
+    image  = models.ImageField(upload_to="Art" , default="media/Art/default.jpg")
     tags = TaggableManager()
     category = models.ManyToManyField(category)
     title = models.CharField(max_length=255)
@@ -36,7 +36,7 @@ class Artwork(models.Model):
         return f" {self.id} - {self.title} "
     
     def get_absolute_url(self):
-        return reverse('Artwork:single',kwargs={'pid': self.id})
+        return reverse('Artwork:single-Artwork',kwargs={'pid': self.id})
 
 class Comments(models.Model):
     post = models.ForeignKey(Artwork,on_delete=models.CASCADE)

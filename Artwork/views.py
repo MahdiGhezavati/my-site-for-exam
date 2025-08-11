@@ -8,24 +8,24 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 #@login_required(login_url="/Accounts/login")
-def view_Artwork(request , cate=None , author_user=None , tag=None):
+def view_Artwork(request , cate=None , tag=None):
     time_now=timezone.localtime(timezone.now())
-    posts = Artwork.objects.filter(poblished_date__lte=time_now , status = 1 )
+    Arts = Artwork.objects.filter(poblished_date__lte=time_now , status = 1 )
     if cate:
-        posts = posts.filter(category__name=cate)
+        Arts = Arts.filter(category__name=cate)
     if tag:
-        posts = posts.filter(tags__name=tag)
+        Arts = Arts.filter(tags__name=tag)
     
-    posts = Paginator(posts , 4)
+    Arts = Paginator(Arts , 4)
     try:
         page_number=request.GET.get('page')
-        posts = posts.get_page(page_number)
+        Arts = Arts.get_page(page_number)
     except EmptyPage:
-        posts = posts.get_page(1)
+        Arts = Arts.get_page(1)
     except PageNotAnInteger:
-        posts = posts.get_page(1)
+        Arts = Arts.get_page(1)
 
-    context = {"posts":posts}
+    context = {"Arts":Arts}
     return render(request, "Artwork/Artworks-page.html" , context)
 
 def view_single_Artwork(request , pid):
@@ -33,23 +33,23 @@ def view_single_Artwork(request , pid):
         form = Commentform(request.POST)
         if form.is_valid():
             form.save()
-            messages.add_message(request , messages.SUCCESS , " SUBMITED! " , extra_tags="succ")
+            messages.add_message(request , messages.SUCCESS , " SUBMITED! Thank you ")
         else:
-            messages.add_message(request , messages.ERROR , "plaese try again ! " , extra_tags="error")
+            messages.add_message(request , messages.ERROR , " The information is incomplete . Please try again")
     form = Commentform()
     #post = Post.objects.get(id = pid)
     time_now=timezone.localtime(timezone.now())
-    posts = Artwork.objects.filter(poblished_date__lte=time_now , status = 1 ) 
-    post = get_object_or_404(posts , pk=pid )
+    Arts = Artwork.objects.filter(poblished_date__lte=time_now , status = 1 ) 
+    Art = get_object_or_404(Arts , pk=pid )
     # get comments
-    comments = Comments.objects.filter(post=post.id , approved=True)
-    if not post.login_require:
+    comments = Comments.objects.filter(post=Art.id , approved=True)
+    if not Art.login_require:
         # create a def for count post views
-        def addview(post):
-            post.content_view += 1
-            return post.save() 
-        addview(post)
-        context = {"post":post , "posts":posts , "comments":comments , "form":form } 
+        def addview(Art):
+            Art.content_view += 1
+            return Art.save() 
+        addview(Art)
+        context = {"Art":Art , "Arts":Arts , "comments":comments , "form":form } 
         return render(request, "Artwork/Artwork-page.html" , context)
     else:
         return render(request,"Accounts/login.html")

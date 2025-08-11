@@ -1,0 +1,43 @@
+{% extends 'BASE.html' %}
+{% load static %}
+{% block body %}
+
+<head>
+<style>
+    .fonet {
+        font-family: fantasy;
+        font-size: x-large;
+        font-size: 60px;
+    }
+</style>
+</head>
+<!-- " Gallery " -->
+<section class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="text-uppercase">Gallery</h2>
+            <hr class="templatemo-section-header-hr">
+            <p class="text-uppercase templatemo-section-subheader"> Artwork you sent </p>
+        </div>
+    </div>
+    <div class="row">
+        {% for art in Arts %}
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 margin-bottom-10 text-center">
+            <div class="product-type-container">
+                <a href="{% url 'Artgallery:single-gallery' pid=art.id %}">
+                    <div class="product-type-overlay">
+                        <div class="product-type-info">
+                            <p class="gold-text text-uppercase"><strong>{{art.artist}}</strong></p>
+                            <h3 class="gold-text text-uppercase fonet">{{art.content_view}} views</h3>
+                        </div>
+                    </div>
+                    <img src="{{art.image.url}}" alt="image for Gallery"
+                        class="product-type-img img-collection gold-border" height="250px" width="250px">
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section> <!-- Gallery -->
+
+{% endblock %}
