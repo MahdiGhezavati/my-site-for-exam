@@ -3,15 +3,14 @@ import os
 from decouple import config
 
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config("SECRET_KEY" , default="mahdi")
+SECRET_KEY = config("SECRET_KEY", default="mahdi")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config("DEBUG" ,cast=bool, default="True")
+DEBUG = config("DEBUG", cast=bool, default="True")
 ALLOWED_HOSTS = ["*"]
 
 # robots
@@ -23,7 +22,7 @@ SITE_ID = 1
 
 # Application definition
 INSTALLED_APPS = [
-    "jazzmin", #app
+    "jazzmin",  # app
     # "multi_captcha_admin",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -32,7 +31,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
-    "django.contrib.sitemaps", #app
+    "django.contrib.sitemaps",  # app
     "webArt.apps.WebartConfig",  # app
     "Artwork.apps.ArtworkConfig",  # app
     "Artist.apps.ArtistConfig",  # app
@@ -41,10 +40,8 @@ INSTALLED_APPS = [
     "django_summernote",  # app
     "taggit",  # app
     "captcha",  # app
-    "robots", #app
-    "compressor", #app
-
-
+    "robots",  # app
+    "compressor",  # app
 ]
 
 MIDDLEWARE = [
@@ -77,8 +74,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "WEBSITE.wsgi.application"
 
-# تنظیمات دیتابیس برای دو حالت 
-
+# تنظیمات دیتابیس برای دو حالت
+"""
 if DEBUG:    # development 
     DATABASES = {
         "default": {
@@ -103,7 +100,17 @@ else:     # production
             "PORT": config("PORT", cast=int , default="5432"),
         }
     }
-
+    """
+DATABASES = {
+    "default": {
+        "ENGINE": config("ENGINE", default="django.db.backends.postgresql"),
+        "NAME": config("NAME", default="project_db"),
+        "USER": config("USER", default="postgres"),
+        "PASSWORD": config("PASSWORD", default="mahdi"),
+        "HOST": config("HOST"),
+        "PORT": config("PORT", cast=int, default="5432"),
+    }
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -141,8 +148,8 @@ else:
     EMAIL_HOST = "smtp.gmail.com"
     EMAIL_USE_TLS = True
     EMAIL_PORT = 587
-    EMAIL_HOST_USER =  config("EMAIL_HOST_USER" , default="ghezavatimahdi7@gmail.com")
-    EMAIL_HOST_PASSWORD =  config("EMAIL_HOST_PASSWORD" , default="sjtyxijlffjnzpqr")
+    EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="ghezavatimahdi7@gmail.com")
+    EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="sjtyxijlffjnzpqr")
 
 
 # settings for >>> Static files (CSS, JavaScript, Images)
@@ -170,50 +177,46 @@ MULTI_CAPTCHA_ADMIN = {
 }
 
 
-
-# STATICFILES_FINDERS به جنگو میگوید فایل استاتیک رو از کجا بگیره  
+# STATICFILES_FINDERS به جنگو میگوید فایل استاتیک رو از کجا بگیره
 STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    "compressor.finders.CompressorFinder",
 ]
 
 # Django Compressor Settings
 COMPRESS_ENABLED = True
 COMPRESS_ROOT = STATIC_ROOT
-COMPRESS_OFFLINE = True # برای سرعت سایت عالیه چون غیر از زمان ریکوعست کاربر فایل هارو فشرده میکنه
-COMPRESS_URL= '/static/'
+COMPRESS_OFFLINE = (
+    True  # برای سرعت سایت عالیه چون غیر از زمان ریکوعست کاربر فایل هارو فشرده میکنه
+)
+COMPRESS_URL = "/static/"
 
-COMPRESS_CSS_FILTERS = [
-    "compressor.filters.cssmin.CSSMinFilter"
-]
-COMPRESS_JS_FILTERS = [
-    "compressor.filters.jsmin.JSMinFilter"
-]
-
+COMPRESS_CSS_FILTERS = ["compressor.filters.cssmin.CSSMinFilter"]
+COMPRESS_JS_FILTERS = ["compressor.filters.jsmin.JSMinFilter"]
 
 
 # تنظیمات قالب برای بخش ادمین
 JAZZMIN_SETTINGS = {
-    "show_ui_builder": False,    # اپشن تغییر تم 
-    "site_title":"login pannel ART life",
-    "welcome_sign":"Welcome",
-    "site_logo":"/img/pencil.jpg",
-    "icons":{                         # اینجا واسه بخش اپ میشه ایکون دلخواه تنظیم کرد برای هر اپ
-        "auth.user":"fas fa-user",
-        "Artwork.artwork":"fas fa-paint-brush",
-        "Artist.artist":"fas fa-palette",
-        "Artwork.category":"fas fa-tags",
-        "Artwork.comments":"fas fa-comments",
-        "Django_summernote":"fas fa-file-alt",
-        "django_summernote.Attachment":"fas fa-paperclip",
-        "taggit.tag":"fas fa-hashtag",
-        "webArt.contact":"fas fa-address-book",
-        "ArtGallery.Artgallery":"fas fa-pen",
-    }
+    "show_ui_builder": False,  # اپشن تغییر تم
+    "site_title": "login pannel ART life",
+    "welcome_sign": "Welcome",
+    "site_logo": "/img/pencil.jpg",
+    "icons": {  # اینجا واسه بخش اپ میشه ایکون دلخواه تنظیم کرد برای هر اپ
+        "auth.user": "fas fa-user",
+        "Artwork.artwork": "fas fa-paint-brush",
+        "Artist.artist": "fas fa-palette",
+        "Artwork.category": "fas fa-tags",
+        "Artwork.comments": "fas fa-comments",
+        "Django_summernote": "fas fa-file-alt",
+        "django_summernote.Attachment": "fas fa-paperclip",
+        "taggit.tag": "fas fa-hashtag",
+        "webArt.contact": "fas fa-address-book",
+        "ArtGallery.Artgallery": "fas fa-pen",
+    },
 }
 
-# تنظیمات مربوط به شکل تم بخش ادمین 
+# تنظیمات مربوط به شکل تم بخش ادمین
 JAZZMIN_UI_TWEAKS = {
     "navbar_small_text": False,
     "footer_small_text": False,
@@ -248,29 +251,29 @@ JAZZMIN_UI_TWEAKS = {
 }
 # اندازه فیلد سامرنوت
 SUMMERNOTE_CONFIG = {
-    "width":"135%",
-    "height":"900px",
+    "width": "135%",
+    "height": "900px",
 }
 
 # تنظیمات کانفیگ برای محیط انتشار
-if config("USE_SSL_SETTINGS",cast=bool,default=False):
+if config("USE_SSL_SETTINGS", cast=bool, default=False):
     # Https settings
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     SECURE_SSL_REDIRECT = True
 
     # HSTS settings
-    SECURE_HSTS_SECONDS = 31536000  
+    SECURE_HSTS_SECONDS = 31536000
     SECURE_HSTS_PRELOAD = True
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
-    #more security settings
+    # more security settings
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_BROWSER_XSS_FILTER = True
     X_FRAME_OPTIONS = "SAMEORIGIN"
     SECURE_REFERRER_POLICY = "strict-origin"
     USE_X_FORWARDED_HOST = True
-    SECURE_PROXY_SSL_HEADER = ("HTTPS_X_FORWARDED_PROTO","https")
+    SECURE_PROXY_SSL_HEADER = ("HTTPS_X_FORWARDED_PROTO", "https")
 
 
 CSRF_COOKIE_SECURE = True
