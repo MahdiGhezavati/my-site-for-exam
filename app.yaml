@@ -7,7 +7,7 @@ handlers:
 
 - url: /static
 
-  static_dir: staticfiles/
+  static_dir: statics/
 
 - url: /.* 
   script: auto
