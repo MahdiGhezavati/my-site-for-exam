@@ -1,0 +1,23 @@
+{
+    "platform": "django",
+    "django": [
+        {
+            "pythonVersion": "3.12",
+            "collectStatic": true,
+            "compileMessages": false,
+            "modifySettings": true,
+            "timezone": "Asia/Tehran"
+        }
+    ],
+    "app": "art-and-life",
+    "disks": [
+        {
+            "name": "static",
+            "mountTo": "staticfiles"
+        },
+        {
+            "name": "media",
+            "mountTo": "media"
+        }
+    ]
+}
