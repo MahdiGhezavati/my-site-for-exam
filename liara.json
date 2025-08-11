@@ -12,7 +12,7 @@
     "app": "art-and-life",
     "disks": [
         {
-            "name": "statics",
+            "name": "static",
             "mountTo": "staticfiles"
         },
         {
