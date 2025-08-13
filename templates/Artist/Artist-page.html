@@ -6,11 +6,13 @@
 <style>
     .fonet-x {
         font-family: fantasy;
-        font-size: x-large;
+        font-size: inherit;
     }
 
     .fonet-x-title {
         font-size: xx-large;
+        font-family: fantasy;
+
     }
 
     .fonet {
@@ -56,11 +58,12 @@
                             </a>
                         </div>
                         <div class="post-excerpt gray-text">
-                            <p>{{Art.content|truncatewords:4|safe}}.</p>
+                            <p>{{Art.content|truncatewords:10|safe}}.</p>
                         </div>
-                        <a href="{% url 'Artist:single' pid=Art.id %}" class="gray-text margin-top-10 post-read-more">
-                            <i class="fa fa-arrow-circle-o-right fa-2x v-align-middle"></i> Read More
-                        </a>
+                        <i class="fa fa-arrow-circle-o-right fa-2x v-align-middle"></i>
+                            <a href="{% url 'Artist:single' pid=Art.id %}" class="gray-text margin-top-10 post-read-more">
+                                <strong>Read More...</strong>
+                            </a>
                     </article>
                     {% endfor %}
                 </div>

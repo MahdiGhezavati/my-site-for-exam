@@ -18,7 +18,7 @@ ROBOTS_USE_HOST = False
 ROBOTS_USE_SITEMAP = False
 
 # sites framwork
-SITE_ID = 1
+SITE_ID = config("SITE_ID",cast=int)
 
 # Application definition
 INSTALLED_APPS = [
@@ -139,7 +139,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # برای زمان تعمیر و تغییرات دسترسی بسته باشه
-MAINTENANCE_MODE = False
+MAINTENANCE_MODE = config("MAINTENANCE_MODE",cast=bool)
 
 # تنظیم تم سامرنوت
 SUMMERNOTE_THEME = "bs4"

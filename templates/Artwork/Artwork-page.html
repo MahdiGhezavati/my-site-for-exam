@@ -63,10 +63,8 @@
 											<a href="{% url 'Artist:blog-Artist' %}" title="view all great Artist">
 												<li class="fonnet gold-text">{{Art.artist}}</li>
 											</a>
-											<li class="fonnet">Comments : {{comments|length}}</li>
 											<li class="fonnet">View : {{Art.content_view}}</li>
-											<li class="fonnet">release time :
-												{{Art.poblished_date|date:"SHORT_DATE_FORMAT"}}</li>
+											<li class="fonnet">release time : {{Art.poblished_date|date:"SHORT_DATE_FORMAT"}}</li>
 										</ul>
 									</div>
 									<br>
@@ -111,7 +109,7 @@
 			</div> <!-- /.aside-block -->
 			<br><br>
 			<div class="aside-block">
-				<h4 class="text-uppercase"><i>last post</i></h4>
+				<h4 class="text-uppercase"><i>Other posts</i></h4>
 				{% for Art in Arts|slice:":3" %}
 				<hr class="gold-hr">
 				<p class="text-uppercase product-type-container ">
@@ -127,27 +125,27 @@
 			</div> <!-- /.aside-block -->
 		</aside>
 	</div>
-	<div class="comments-area">
-		<hr>
-		<br><br>
-		<h4 class="text-uppercase text-center"><i><strong>{{ comments|length }} Comments</strong></i></h4>
-		{% if comments %}
-		{% for comment in comments %}
-		<hr class="gold-hr">
-		<p class="text-uppercase"><img src="{% static 'img/User Avatar.jpg' %}" alt="" height="50px"
-				width="50px"><strong> &RightArrow; {{comment.name}} </strong> --- {{comment.created_date}}
-		</p>
-		<p class="comment">
-			{{comment.message}}
-		</p>
-		{% endfor %}
-		<hr>
-		{% else %}
-		<p class="text-center">no comment for this post , you don't have comment? </p>
-		<br>
-		<hr>
-		{% endif %}
-	</div>
+		<div class="comments-area">
+			<hr>
+			<br><br>
+			<h4 class="text-uppercase text-center"><i><strong>{{ comments|length }} Comments</strong></i></h4>
+			{% if comments %}
+			{% for comment in comments %}
+			<hr class="gold-hr">
+			<p class="text-uppercase"><img src="{% static 'img/User Avatar.jpg' %}" alt="" height="50px"
+					width="50px"><strong> &RightArrow; {{comment.name}} </strong> --- {{comment.created_date}}
+			</p>
+			<p class="comment">
+				{{comment.message}}
+			</p>
+			{% endfor %}
+			<hr>
+			{% else %}
+			<p class="text-center">no comment for this post , you don't have comment? </p>
+			<br>
+			<hr>
+			{% endif %}
+		</div>
 	<br><br>
 </div>
 <section class="templatemo-container padding-0">
